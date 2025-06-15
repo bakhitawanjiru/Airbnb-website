@@ -1,109 +1,124 @@
 .auth-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    background-color: #f5f5f5;
+    align-items: center;
+    min-height: calc(100vh - 60px); /* Updated from 80px to 60px */
+    background-color: #efeee4;
+    padding: 20px;
+    margin-top: 60px; /* Updated from 80px to 60px */
 }
 
-.auth-form {
-    background: white;
+.auth-box {
+    background-color: white;
     padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
 }
 
-.auth-title {
-    color: #0077B6;
+.auth-box h2 {
+    color: #4f7e52;
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 
-.form-label {
+.form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #333;
+    color: #4f7e52;
     font-weight: 500;
 }
 
-.form-input {
+.form-group input,
+.form-group select {
     width: 100%;
-    padding: 0.75rem;
-    border: 2px solid #e1e1e1;
-    border-radius: 4px;
+    padding: 0.8rem;
+    border: 2px solid #efeee4;
+    border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
 }
 
-.form-input:focus {
+.form-group input:focus,
+.form-group select:focus {
     outline: none;
-    border-color: #0077B6;
+    border-color: #4f7e52;
+    box-shadow: 0 0 0 3px rgba(79, 126, 82, 0.2);
 }
 
-.submit-button {
+.submit-btn {
     width: 100%;
-    padding: 0.75rem;
-    background-color: #0077B6;
+    padding: 1rem;
+    background-color: #4f7e52;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 1rem;
 }
 
-.submit-button:hover {
-    background-color: #005a8c;
+.submit-btn:hover {
+    background-color: #3d6240;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+}
+
+.auth-link a {
+    color: #4f7e52;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
 }
 
 .error-message {
     color: #dc3545;
     font-size: 0.875rem;
     margin-top: 0.5rem;
-    text-align: center;
 }
 
-.auth-switch {
-    text-align: center;
-    margin-top: 1.5rem;
-    color: #6b7280;
-    font-size: 0.875rem;
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .auth-box {
+        padding: 1.5rem;
+    }
+
+    .auth-box h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 0.7rem;
+    }
 }
 
-.auth-switch a {
-    color: #0077B6;
-    text-decoration: none;
-    font-weight: 500;
-    margin-left: 0.25rem;
+/* Custom select styling */
+.form-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f7e52' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
 }
 
-.auth-switch a:hover {
-    text-decoration: underline;
+/* Loading state for submit button */
+.submit-btn:disabled {
+    background-color: #7da980;
+    cursor: not-allowed;
 }
-
-/* Password strength indicator */
-.password-strength {
-    height: 4px;
-    margin-top: 0.5rem;
-    border-radius: 2px;
-    background: #e4e7ec;
-    overflow: hidden;
-}
-
-.password-strength-bar {
-    height: 100%;
-    transition: width 0.3s ease;
-}
-
-.strength-weak { width: 33.33%; background-color: #dc3545; }
-.strength-medium { width: 66.66%; background-color: #ffc107; }
-.strength-strong { width: 100%; background-color: #28a745; }

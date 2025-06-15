@@ -1,0 +1,174 @@
+.admin-dashboard {
+    padding: 2rem;
+    margin-top: 60px;
+    background-color: #f8f8f8;
+    min-height: calc(100vh - 60px);
+}
+
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    color: #4f7e52;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.admin-welcome {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.stats-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: #efeee4;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4f7e52;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 0.8rem 1.5rem;
+    background-color: #efeee4;
+    border: none;
+    border-radius: 8px;
+    color: #4f7e52;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: #4f7e52;
+    color: #efeee4;
+}
+
+.tab-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 400px;
+}
+
+.admin-tab-content h2 {
+    color: #4f7e52;
+    margin-bottom: 1.5rem;
+}
+
+.booking-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.search-input,
+.filter-select {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.search-input {
+    flex: 1;
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.booking-table th,
+.booking-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.booking-table th {
+    background-color: #efeee4;
+    color: #4f7e52;
+}
+
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.report-card {
+    background-color: #efeee4;
+    padding: 1.5rem;
+    border-radius: 12px;
+}
+
+.report-card h3 {
+    color: #4f7e52;
+    margin-bottom: 1rem;
+}
+
+.chart-placeholder {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    color: #666;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-data {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+@media (max-width: 768px) {
+    .admin-dashboard {
+        padding: 1rem;
+    }
+
+    .admin-tabs {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        width: 100%;
+    }
+
+    .booking-filters {
+        flex-direction: column;
+    }
+    
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+}

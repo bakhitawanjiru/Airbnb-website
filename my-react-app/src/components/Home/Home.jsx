@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FaSearch, FaCalendarAlt, FaUser } from 'react-icons/fa';
 import ListingCard from '../ListingCard/ListingCard';
 import './Home.css';
 
@@ -38,24 +40,98 @@ const dummyListings = [
 ];
 
 const Home = () => {
+    const navigate = useNavigate();
+    const [searchParams, setSearchParams] = useState({
+        location: '',
+        checkIn: '',
+        checkOut: '',
+        guests: 1
+    });
+
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`http://127.0.0.1:8000/api/listings/search/?${new URLSearchParams({
+                location: searchParams.location,
+                check_in: searchParams.checkIn,
+                check_out: searchParams.checkOut,
+                guests: searchParams.guests
+            })}`);
+            
+            if (!response.ok) {
+                throw new Error('Search failed');
+            }
+            
+            const data = await response.json();
+            navigate('/search', { state: { results: data, searchParams } });
+        } catch (error) {
+            console.error('Search error:', error);
+            alert('Unable to perform search. Please try again later.');
+        }
+    };
+
     return (
         <div className="home">
-            <header className="hero">
+            <div className="hero">
                 <div className="hero-content">
-                    <h1>Find Your Perfect Stay</h1>
-                    <p>Discover unique places and experiences around the world</p>
-                    <div className="search-box">
-                        <input 
-                            type="text" 
-                            placeholder="Where would you like to go?"
-                            className="search-input"
-                        />
-                        <button className="search-button">
-                            Explore Now
-                        </button>
+                    <h1>Find your next stay</h1>
+                    <p>Search low prices on accommodations for your dream vacation</p>
+                    
+                    <div className="search-wrapper">
+                        <form onSubmit={handleSearch} className="search-form">
+                            <div className="search-box">
+                                <div className="search-input-group">
+                                    <FaSearch className="search-icon" />
+                                    <input
+                                        type="text"
+                                        placeholder="Where are you going?"
+                                        value={searchParams.location}
+                                        onChange={(e) => setSearchParams({...searchParams, location: e.target.value})}
+                                    />
+                                </div>
+
+                                <div className="search-divider"></div>
+
+                                <div className="search-input-group dates">
+                                    <FaCalendarAlt className="search-icon" />
+                                    <div className="date-inputs">
+                                        <input
+                                            type="date"
+                                            value={searchParams.checkIn}
+                                            onChange={(e) => setSearchParams({...searchParams, checkIn: e.target.value})}
+                                            placeholder="Check-in"
+                                        />
+                                        <span className="date-separator">→</span>
+                                        <input
+                                            type="date"
+                                            value={searchParams.checkOut}
+                                            onChange={(e) => setSearchParams({...searchParams, checkOut: e.target.value})}
+                                            placeholder="Check-out"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="search-divider"></div>
+
+                                <div className="search-input-group">
+                                    <FaUser className="search-icon" />
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        value={searchParams.guests}
+                                        onChange={(e) => setSearchParams({...searchParams, guests: e.target.value})}
+                                        placeholder="Guests"
+                                    />
+                                </div>
+
+                                <button type="submit" className="search-button">
+                                    <FaSearch /> Search
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </header>
+            </div>
 
             <section className="featured-listings">
                 <h2>Popular Destinations</h2>

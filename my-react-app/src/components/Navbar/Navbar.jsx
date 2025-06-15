@@ -7,29 +7,26 @@ const Navbar = () => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        logout();
-        navigate('/login');
-    };
-
     return (
         <nav className="navbar">
-            <div className="navbar-left">
-                <Link to="/" className="logo">
-                    Airbnb
-                </Link>
-            </div>
+            <Link to="/" className="nav-brand">
+                <img src="logo.png" alt="Logo" className="nav-logo" />
+            </Link>
             
-            <div className="navbar-right">
+            <div className="nav-right">
                 {user ? (
                     <>
-                        <span className="welcome-text">Welcome, {user.username}</span>
-                        <button onClick={handleLogout} className="nav-button">Logout</button>
+                        {user.user_type === 'host' ? (
+                            <Link to="/host-dashboard" className="nav-link">Host Dashboard</Link>
+                        ) : (
+                            <Link to="/dashboard" className="nav-link">Dashboard</Link>
+                        )}
+                        <button onClick={logout} className="nav-button">Logout</button>
                     </>
                 ) : (
                     <>
                         <Link to="/login" className="nav-link">Login</Link>
-                        <Link to="/register" className="nav-link">Register</Link>
+                        <Link to="/register" className="nav-button">Sign Up</Link>
                     </>
                 )}
             </div>

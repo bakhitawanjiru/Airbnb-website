@@ -1,13 +1,12 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from .models import User
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
-    email = serializers.EmailField(required=True)
-
+    
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'password')
+        fields = ('id', 'username', 'email', 'password', 'user_type', 'phone', 'bio')
         extra_kwargs = {
             'password': {'write_only': True},
             'email': {'required': True}
@@ -17,11 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
         user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data['email'],
-            password=validated_data['password']
+            password=validated_data['password'],
+            user_type=validated_data.get('user_type', 'user')
         )
         return user
-
-    def validate_email(self, value):
-        if User.objects.filter(email=value).exists():
-            raise serializers.ValidationError("A user with this email already exists.")
-        return value

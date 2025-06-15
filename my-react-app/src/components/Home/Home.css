@@ -5,90 +5,108 @@
 
 .hero {
     height: 85vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
-                url('/hero-background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(rgba(79, 126, 82, 0.7), rgba(79, 126, 82, 0.8));
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #efeee4;
     text-align: center;
-    position: relative;
-    overflow: hidden;
 }
 
 .hero-content {
-    max-width: 900px;
-    padding: 40px;
-    backdrop-filter: blur(5px);
-    background-color: rgba(0, 0, 0, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-out;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 2rem;
 }
 
 .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
 .hero-content p {
-    font-size: 1.8rem;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.search-wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .search-box {
     display: flex;
-    gap: 15px;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    align-items: center;
+    background: #efeee4;
+    border-radius: 50px;
+    padding: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.search-input {
+.search-input-group {
     flex: 1;
-    padding: 18px 25px;
-    border: 2px solid transparent;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    background-color: #f8f9fa;
-    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    position: relative;
 }
 
-.search-input:focus {
+.search-icon {
+    color: #4f7e52;
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.search-input-group input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: #333;
+}
+
+.search-input-group input:focus {
     outline: none;
-    border-color: #0077B6;
-    background-color: white;
-    box-shadow: 0 0 0 4px rgba(0, 119, 182, 0.1);
+}
+
+.search-divider {
+    width: 1px;
+    height: 2rem;
+    background-color: #ddd;
+}
+
+.dates {
+    flex: 2;
+}
+
+.date-inputs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.date-separator {
+    color: #4f7e52;
+    font-weight: bold;
 }
 
 .search-button {
-    padding: 18px 35px;
-    background-color: #0077B6;
-    color: white;
+    background-color: #4f7e52;
+    color: #efeee4;
     border: none;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease;
 }
 
 .search-button:hover {
-    background-color: #005a8c;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 119, 182, 0.3);
+    background-color: #3d6240;
 }
 
 .featured-listings {
@@ -148,10 +166,22 @@
     
     .search-box {
         flex-direction: column;
-        padding: 15px;
+        border-radius: 15px;
+        padding: 1rem;
+    }
+    
+    .search-divider {
+        width: 100%;
+        height: 1px;
+        margin: 0.5rem 0;
+    }
+    
+    .search-input-group {
+        width: 100%;
     }
     
     .search-button {
         width: 100%;
+        margin-top: 1rem;
     }
 }
